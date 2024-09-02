@@ -1,3 +1,4 @@
+import AttendanceChart from "@/app/components/AttendenceChart";
 import CountChart from "@/app/components/CountChart";
 import UserCards from "@/app/components/UserCards";
 
@@ -21,7 +22,9 @@ const page = () => {
           </div>
 
           {/* attendence chart  */}
-          <div className="w-full lg:w-2/3 h-[450px]"></div>
+          <div className="w-full lg:w-2/3 h-[450px]">
+            <AttendanceChart />
+          </div>
         </div>
         {/* middile chart  */}
 
