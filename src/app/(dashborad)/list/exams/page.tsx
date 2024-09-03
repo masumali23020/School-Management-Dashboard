@@ -4,6 +4,7 @@ import TableSearch from "@/app/components/TableSearch";
 import { examsData } from "@/app/lib/data";
 import Image from "next/image";
 
+
 type Exam = {
   id: number;
   subject: string;
@@ -47,7 +48,7 @@ const LeassonPage = () => {
       <td className="hidden md:table-cell">{item.class}</td>
       <td className="hidden md:table-cell">{item.teacher}</td>
       <td className="hidden md:table-cell">{item.date}</td>
-
+   
       <td>
         {/* <div className="flex items-center gap-2">
           {role === "admin" && (
