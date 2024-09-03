@@ -1,5 +1,7 @@
+import Announcements from "@/app/components/Announcements";
 import AttendanceChart from "@/app/components/AttendenceChart";
 import CountChart from "@/app/components/CountChart";
+import EventCalendar from "@/app/components/EvenCalender";
 import FinanaceChart from "@/app/components/FinanaceChart";
 import UserCards from "@/app/components/UserCards";
 
@@ -34,7 +36,10 @@ const page = () => {
         </div>
       </div>
       {/* right side  */}
-      <div className="w-full lg:w-1/3">right</div>
+      <div className="w-full lg:w-1/3 flex flex-col gap-8">
+        <EventCalendar />
+        <Announcements />
+      </div>
     </div>
   );
 };
