@@ -1,3 +1,4 @@
+import FormModal from "@/app/components/FormModal";
 import Pagination from "@/app/components/Pagination";
 import Table from "@/app/components/Table";
 import TableSearch from "@/app/components/TableSearch";
@@ -84,10 +85,10 @@ const TeachersPage = () => {
             </button>
           </Link>
           {role === "admin" && (
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
-              <Image src="/delete.png" alt="" width={16} height={16} />
-            </button>
-            // <FormModal table="teacher" type="delete" id={item.id}/>
+            // <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+            //   <Image src="/delete.png" alt="" width={16} height={16} />
+            // </button>
+            <FormModal table="teacher" type="delete" id={item.id} />
           )}
         </div>
       </td>

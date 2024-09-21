@@ -1,8 +1,11 @@
 import Announcements from "@/app/components/Announcements";
-import FormModal from "@/app/components/FormModal";
 import BigCalendar from "@/app/components/BigCalender";
+import FormModal from "@/app/components/FormModal";
+import Performance from "@/app/components/Performance";
 import Image from "next/image";
 import Link from "next/link";
+
+import { role } from "@/app/lib/data";
 
 const SingleTeacherPage = () => {
   return (
