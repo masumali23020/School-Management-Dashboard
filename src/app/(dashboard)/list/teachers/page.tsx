@@ -74,6 +74,8 @@ const TeacherListPage = async ({ searchParams }: { searchParams?: { key: string 
             query.name = {
               contains: value, mode: "insensitive"
             }
+          default:
+            break
 
 
         }
