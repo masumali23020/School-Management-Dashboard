@@ -101,9 +101,10 @@ const ExamListPage = async ({
             query.lesson.teacherId = value;
             break;
           case "search":
-            query.lesson.subject = {
-              name: { contains: value, mode: "insensitive" },
-            };
+            query.OR = [
+              { lesson: { subject: { name: { contains: value, mode: "insensitive" } } } },
+              { lesson: { teacher: { name: { contains: value, mode: "insensitive" } } } },
+            ]
             break;
           default:
             break;
@@ -114,34 +115,34 @@ const ExamListPage = async ({
 
   // ROLE CONDITIONS
 
-  switch (role) {
-    case "admin":
-      break;
-    case "teacher":
-      query.lesson.teacherId = currentUserId!;
-      break;
-    case "student":
-      query.lesson.class = {
-        students: {
-          some: {
-            id: currentUserId!,
-          },
-        },
-      };
-      break;
-    case "parent":
-      query.lesson.class = {
-        students: {
-          some: {
-            parentId: currentUserId!,
-          },
-        },
-      };
-      break;
+  // switch (role) {
+  //   case "admin":
+  //     break;
+  //   case "teacher":
+  //     query.lesson.teacherId = currentUserId!;
+  //     break;
+  //   case "student":
+  //     query.lesson.class = {
+  //       students: {
+  //         some: {
+  //           id: currentUserId!,
+  //         },
+  //       },
+  //     };
+  //     break;
+  //   case "parent":
+  //     query.lesson.class = {
+  //       students: {
+  //         some: {
+  //           parentId: currentUserId!,
+  //         },
+  //       },
+  //     };
+  //     break;
 
-    default:
-      break;
-  }
+  //   default:
+  //     break;
+  // }
 
   const [data, count] = await prisma.$transaction([
     prisma.exam.findMany({
