@@ -4,6 +4,7 @@ import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/settings";
+import { role } from "@/lib/utils";
 import { Class, Prisma, Teacher } from "@prisma/client";
 import Image from "next/image";
 
@@ -17,7 +18,7 @@ const ClassListPage = async ({
 }) => {
 
 
-  const role = "admin"
+
 
 
   const columns = [
