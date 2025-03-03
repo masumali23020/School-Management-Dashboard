@@ -1,14 +1,21 @@
 import prisma from "@/lib/prisma";
 
+import { auth } from "@clerk/nextjs/server";
+
 const Announcements = async () => {
-  const role = "admin";
-  const userId = "1";
+
+  const { userId, sessionClaims } = auth()
+
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+
 
   const roleConditions = {
     teacher: { lessons: { some: { teacherId: userId! } } },
     student: { students: { some: { id: userId! } } },
     parent: { students: { some: { parentId: userId! } } },
   };
+
+
 
   const data = await prisma.announcement.findMany({
     take: 3,
@@ -58,6 +65,7 @@ const Announcements = async () => {
               <h2 className="font-medium">{data[2].title}</h2>
               <span className="text-xs text-gray-400 bg-white rounded-md px-1 py-1">
                 {new Intl.DateTimeFormat("en-GB").format(data[2].date)}
+                {/* {new Intl.DateTimeFormat("bn-BD").format(data[2].date)} */}
               </span>
             </div>
             <p className="text-sm text-gray-400 mt-1">{data[2].description}</p>
