@@ -21,7 +21,7 @@ const deleteActionMap = {
   teacher: deleteTeacher,
   student: deleteStudent,
   exam: deleteExam,
-  // TODO: OTHER DELETE ACTIONS
+// TODO: OTHER DELETE ACTIONS
   parent: deleteSubject,
   lesson: deleteSubject,
   assignment: deleteSubject,
@@ -116,8 +116,8 @@ const FormModal = ({
     type === "create"
       ? "bg-lamaYellow"
       : type === "update"
-        ? "bg-lamaSky"
-        : "bg-lamaPurple";
+      ? "bg-lamaSky"
+      : "bg-lamaPurple";
 
   const [open, setOpen] = useState(false);
 

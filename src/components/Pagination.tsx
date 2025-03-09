@@ -11,7 +11,6 @@ const Pagination = ({ page, count }: { page: number; count: number }) => {
 
   const changePage = (newPage: number) => {
     const params = new URLSearchParams(window.location.search);
-
     params.set("page", newPage.toString());
     router.push(`${window.location.pathname}?${params}`);
   };
@@ -34,8 +33,9 @@ const Pagination = ({ page, count }: { page: number; count: number }) => {
             return (
               <button
                 key={pageIndex}
-                className={`px-2 rounded-sm ${page === pageIndex ? "bg-lamaSky" : ""
-                  }`}
+                className={`px-2 rounded-sm ${
+                  page === pageIndex ? "bg-lamaSky" : ""
+                }`}
                 onClick={() => {
                   changePage(pageIndex);
                 }}
@@ -46,12 +46,6 @@ const Pagination = ({ page, count }: { page: number; count: number }) => {
           }
         )}
       </div>
-      <div className="text-sm">
-        {page * ITEM_PER_PAGE - ITEM_PER_PAGE + 1} -{" "}
-        {Math.min(page * ITEM_PER_PAGE, count)} of {count}
-      </div>
-
-
       <button
         className="py-2 px-4 rounded-md bg-slate-200 text-xs font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={!hasNext}

@@ -4,9 +4,9 @@ import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import prisma from "@/lib/prisma";
 import { ITEM_PER_PAGE } from "@/lib/settings";
-import { currentUserId } from "@/lib/utils";
 import { Class, Event, Prisma } from "@prisma/client";
 import Image from "next/image";
+import { auth } from "@clerk/nextjs/server";
 
 type EventList = Event & { class: Class };
 
@@ -16,7 +16,9 @@ const EventListPage = async ({
   searchParams: { [key: string]: string | undefined };
 }) => {
 
-  const role = "admin";
+  const { userId, sessionClaims } = auth();
+  const role = (sessionClaims?.metadata as { role?: string })?.role;
+  const currentUserId = userId;
 
   const columns = [
     {
@@ -44,11 +46,11 @@ const EventListPage = async ({
     },
     ...(role === "admin"
       ? [
-        {
-          header: "Actions",
-          accessor: "action",
-        },
-      ]
+          {
+            header: "Actions",
+            accessor: "action",
+          },
+        ]
       : []),
   ];
 

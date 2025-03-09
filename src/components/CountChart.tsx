@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import {
-  RadialBar,
   RadialBarChart,
-  ResponsiveContainer
+  RadialBar,
+  Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 
@@ -11,7 +12,7 @@ const CountChart = ({ boys, girls }: { boys: number; girls: number }) => {
   const data = [
     {
       name: "Total",
-      count: boys + girls,
+      count: boys+girls,
       fill: "white",
     },
     {

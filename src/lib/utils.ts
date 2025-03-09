@@ -1,6 +1,6 @@
-
-
-import { auth } from "@clerk/nextjs/server";
+// IT APPEARS THAT BIG CALENDAR SHOWS THE LAST WEEK WHEN THE CURRENT DAY IS A WEEKEND.
+// FOR THIS REASON WE'LL GET THE LAST WEEK AS THE REFERENCE WEEK.
+// IN THE TUTORIAL WE'RE TAKING THE NEXT WEEK AS THE REFERENCE WEEK.
 
 const getLatestMonday = (): Date => {
   const today = new Date();
@@ -43,8 +43,3 @@ export const adjustScheduleToCurrentWeek = (
     };
   });
 };
-
-
-const { sessionClaims , userId } =  auth()
-export const role = (sessionClaims?.metadata as { role?: string })?.role
-export const currentUserId = userId
