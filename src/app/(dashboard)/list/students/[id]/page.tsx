@@ -1,8 +1,9 @@
-import Announcements from "@/components/Announcements";
-import BigCalendar from "@/components/BigCalender";
-import Performance from "@/components/Performance";
+
 import Image from "next/image";
 import Link from "next/link";
+import Announcements from "../../../../../components/Announcements";
+import BigCalendar from "../../../../../components/BigCalender";
+import Performance from "../../../../../components/Performance";
 
 const SingleStudentPage = () => {
   return (

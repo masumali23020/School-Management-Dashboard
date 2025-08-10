@@ -1,9 +1,9 @@
-import FormModal from "@/components/FormModal";
-import Pagination from "@/components/Pagination";
-import Table from "@/components/Table";
-import TableSearch from "@/components/TableSearch";
-import { parentsData, role } from "@/lib/data";
 import Image from "next/image";
+import FormModal from "../../../../components/FormModal";
+import Pagination from "../../../../components/Pagination";
+import Table from "../../../../components/Table";
+import TableSearch from "../../../../components/TableSearch";
+import { parentsData, role } from "../../../../lib/data";
 
 type Parent = {
   id: number;
@@ -83,7 +83,7 @@ const ParentListPage = () => {
               <Image src="/sort.png" alt="" width={14} height={14} />
             </button>
             {role === "admin" && (
-              <FormModal table="teacher" type="create"/>
+              <FormModal table="teacher" type="create" />
             )}
           </div>
         </div>
