@@ -1,10 +1,10 @@
-import Announcements from "@/components/Announcements";
-import BigCalendar from "@/components/BigCalender";
-import FormModal from "@/components/FormModal";
-import Performance from "@/components/Performance";
-import { role } from "@/lib/data";
+
 import Image from "next/image";
 import Link from "next/link";
+import Announcements from "../../../../../components/Announcements";
+import BigCalendar from "../../../../../components/BigCalender";
+import FormModal from "../../../../../components/FormModal";
+import { role } from "../../../../../lib/data";
 
 const SingleTeacherPage = () => {
   return (
