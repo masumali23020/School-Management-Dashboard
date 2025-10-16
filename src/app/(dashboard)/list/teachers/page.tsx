@@ -6,7 +6,8 @@ import Pagination from "../../../../components/Pagination";
 import Table from "../../../../components/Table";
 import TableSearch from "../../../../components/TableSearch";
 import { role } from "../../../../lib/data";
-import prisma from "../../../../lib/db";
+import { getPaginatedTeachers } from "../../../actions/teacherAction";
+
 
 type TeacheType = Teacher & { subjects: Subject[] } & { classes: Class[] }
 
@@ -47,17 +48,17 @@ const columns = [
   },
 ];
 
-const TeacherListPage = async () => {
+const TeacherListPage = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) => {
 
-  const getTeacher = await prisma.teacher.findMany({
-    include: {
-      subjects: true,
-      classes: true,
-    }
-  })
 
-  // console.log(getTeacher) 
+  const { page, ...queryParams } = searchParams;
+  let p = page ? parseInt(page) : 1
 
+  const { teachers: getTeacher, count } = await getPaginatedTeachers(p);
 
   const renderRow = (item: TeacheType) => (
     <tr
@@ -126,7 +127,7 @@ const TeacherListPage = async () => {
       {/* LIST */}
       <Table columns={columns} renderRow={renderRow} data={getTeacher} />
       {/* PAGINATION */}
-      <Pagination />
+      <Pagination page={p} count={count} />
     </div>
   );
 };
